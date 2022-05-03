@@ -32,10 +32,14 @@ body {
 }
 
 .grid {
+    box-sizing: content-box;
     width: 700px;
     height: 700px;
     border: 3px solid rgb(237, 76, 103, .6);
     border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .buttons {
@@ -71,4 +75,11 @@ body {
     border-top: 5px solid #f7f7f7;
     color: #f7f7f7;
     width: 900px;
+}
+
+.cell {
+    min-width: calc(700px/5);
+    min-height: calc(700px/5);
+    box-shadow: inset 0 0 1px rgb(237, 76, 103, 1);
+    flex-grow: 1;
 }
