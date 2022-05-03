@@ -24,6 +24,15 @@ function clearGrid() {
     }
 }
 
+function setRandomColor() {
+    let r = Math.ceil(Math.random() * 255);
+    let g = Math.ceil(Math.random() * 255);
+    let b = Math.ceil(Math.random() * 255);
+    let color = `rgb(${r}, ${g}, ${b})`;
+
+    return color;
+}
+
 //UI
 function setupDefault() {
     for(let i = 1; i <= (64 * 64); i++) {
@@ -41,7 +50,7 @@ function setGrid() {
     for(let i = 1; i <= (number * number); i++) {
         const div = document.createElement("div");
         div.classList.add("cell");
-        div.style.cssText = `min-width: calc(700px/${number}); min-height: calc(700px/${number}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .3); flex-grow: 1;`
+        div.style.cssText = `min-width: calc(700px/${number}); min-height: calc(700px/${number}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .3); flex-grow: 1;`;
         grid.appendChild(div);
     }
 }
@@ -49,4 +58,4 @@ function setGrid() {
 
 //Event Listeners
 btnSetGrid.addEventListener("click", setGrid);
-window.onload(setupDefault());
+window.addEventListener("load", setupDefault)
