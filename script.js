@@ -1,5 +1,7 @@
 "use strict"
 
+let color = "#333"
+
 //DOM
 const btnSetGrid = document.querySelector(".btn-grid");
 const btnColor = document.querySelector(".btn-color");
@@ -33,12 +35,17 @@ function setRandomColor() {
     return color;
 }
 
+function changeColor() {
+    this.style.backgroundColor = color;
+}
+
 //UI
 function setupDefault() {
-    for(let i = 1; i <= (64 * 64); i++) {
+    for(let i = 1; i <= (16 * 16); i++) {
         const div = document.createElement("div");
         div.classList.add("cell");
-        div.style.cssText = `min-width: calc(700px/${64}); min-height: calc(700px/${64}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .4); flex-grow: 1;`
+        div.addEventListener("mouseover", changeColor);
+        div.style.cssText = `min-width: calc(700px/${16}); min-height: calc(700px/${16}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .4); flex-grow: 1;`
         grid.appendChild(div);
     }
 }
@@ -50,6 +57,7 @@ function setGrid() {
     for(let i = 1; i <= (number * number); i++) {
         const div = document.createElement("div");
         div.classList.add("cell");
+        div.addEventListener("mouseover", changeColor);
         div.style.cssText = `min-width: calc(700px/${number}); min-height: calc(700px/${number}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .3); flex-grow: 1;`;
         grid.appendChild(div);
     }
@@ -59,3 +67,8 @@ function setGrid() {
 //Event Listeners
 btnSetGrid.addEventListener("click", setGrid);
 window.addEventListener("load", setupDefault)
+
+const colors = document.querySelector(".color-picker");
+colors.addEventListener("change", (e) => {
+    color = e.target.value;
+})
