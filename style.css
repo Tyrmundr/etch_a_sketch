@@ -67,6 +67,24 @@ body {
     border: solid 5px rgba(237, 76, 103, 0);
 }
 
+.btn-color {
+    width: 25%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.color-picker {
+    flex: 1;
+    height: 100%;
+    border: solid 5px rgba(237, 76, 103, .5);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 #footer {
     text-align: center;
     font-size: 18px;
