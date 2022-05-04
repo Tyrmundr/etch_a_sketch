@@ -75,3 +75,6 @@ body {
     width: 900px;
 }
 
+.cell {
+    transition: .3s;
+}
