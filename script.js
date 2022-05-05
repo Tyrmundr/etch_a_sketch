@@ -1,9 +1,12 @@
 "use strict"
 
-let color = "#333"
+let color = "#333";
+let state = false;
+let shade = false;
 
 //DOM
 const btnSetGrid = document.querySelector(".btn-grid");
+const btnRandomColor = document.querySelector(".btn-random");
 const btnColor = document.querySelector(".btn-color");
 const btnShade = document.querySelector(".btn-shade");
 const grid = document.querySelector(".grid");
@@ -36,7 +39,14 @@ function setRandomColor() {
 }
 
 function changeColor() {
-    this.style.backgroundColor = color;
+    let shadow = 1;
+    if(state) {
+        this.style.backgroundColor = setRandomColor();
+    } else {
+        this.style.backgroundColor = color;
+    }
+
+    this.style.filter = `brightness(${shadow})`
 }
 
 //UI
@@ -71,4 +81,12 @@ window.addEventListener("load", setupDefault)
 const colors = document.querySelector(".color-picker");
 colors.addEventListener("change", (e) => {
     color = e.target.value;
+})
+
+btnRandomColor.addEventListener("click", () => {
+    state = !state;
+});
+
+btnShade.addEventListener("click", () => {
+    shade = !shade;
 })
