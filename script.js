@@ -39,14 +39,18 @@ function setRandomColor() {
 }
 
 function changeColor() {
-    let shadow = 1;
     if(state) {
         this.style.backgroundColor = setRandomColor();
     } else {
         this.style.backgroundColor = color;
     }
-
-    this.style.filter = `brightness(${shadow})`
+    
+    if(shade) {
+        let brightness = Number(this.style.filter.slice(11, -1));
+        if(brightness <= 1 && brightness >= 0) {
+            this.style.filter = `brightness(${brightness - 0.1})`;
+        }
+    }
 }
 
 //UI
@@ -55,7 +59,7 @@ function setupDefault() {
         const div = document.createElement("div");
         div.classList.add("cell");
         div.addEventListener("mouseover", changeColor);
-        div.style.cssText = `min-width: calc(700px/${16}); min-height: calc(700px/${16}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .4); flex-grow: 1;`
+        div.style.cssText = `min-width: calc(700px/${16}); min-height: calc(700px/${16}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .4); flex-grow: 1; filter: brightness(1)`
         grid.appendChild(div);
     }
 }
@@ -68,7 +72,7 @@ function setGrid() {
         const div = document.createElement("div");
         div.classList.add("cell");
         div.addEventListener("mouseover", changeColor);
-        div.style.cssText = `min-width: calc(700px/${number}); min-height: calc(700px/${number}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .3); flex-grow: 1;`;
+        div.style.cssText = `min-width: calc(700px/${number}); min-height: calc(700px/${number}); box-shadow: inset 0 0 1px rgb(237, 76, 103, .3); flex-grow: 1; filter: brightness(1)`;
         grid.appendChild(div);
     }
 }
