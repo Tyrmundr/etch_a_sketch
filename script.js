@@ -1,6 +1,6 @@
 "use strict"
 
-let color = "#333";
+let color = "#f7f7f7";
 let state = false;
 let shade = false;
 
@@ -9,6 +9,7 @@ const btnSetGrid = document.querySelector(".btn-grid");
 const btnRandomColor = document.querySelector(".btn-random");
 const btnColor = document.querySelector(".btn-color");
 const btnShade = document.querySelector(".btn-shade");
+const colors = document.querySelector(".color-picker");
 const grid = document.querySelector(".grid");
 
 //Game Logic
@@ -55,6 +56,7 @@ function changeColor() {
 
 //UI
 function setupDefault() {
+    setMode("default");
     for(let i = 1; i <= (16 * 16); i++) {
         const div = document.createElement("div");
         div.classList.add("cell");
@@ -77,20 +79,29 @@ function setGrid() {
     }
 }
 
+function setMode(mode) {
+    const modeSpan = document.querySelector(".mode");
+    modeSpan.innerText = mode;
+}
+
 
 //Event Listeners
 btnSetGrid.addEventListener("click", setGrid);
 window.addEventListener("load", setupDefault)
 
-const colors = document.querySelector(".color-picker");
 colors.addEventListener("change", (e) => {
+    setMode("custom");
     color = e.target.value;
 })
 
 btnRandomColor.addEventListener("click", () => {
     state = !state;
+    shade = false;
+    setMode("random");
 });
 
 btnShade.addEventListener("click", () => {
+    state = false;
     shade = !shade;
+    setMode("shader");
 })
