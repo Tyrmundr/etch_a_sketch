@@ -46,6 +46,27 @@ body {
     color: rgb(237, 76, 103, .6);
 }
 
+.reset {
+    font-size: 42px;
+    color: rgba(237, 76, 103, .6);
+    border: 3px solid rgba(237, 76, 103, .6);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.reset:hover {
+    color: #f7f7f7;
+    background-color: rgba(237, 76, 103, .6);
+    border: 3px solid rgba(237, 76, 103, 0);
+    transform: rotate(-90deg);
+}
+
 .grid {
     box-sizing: content-box;
     width: 700px;
@@ -74,6 +95,7 @@ body {
     background-color: #f7f7f7;
     cursor: pointer;
     border-radius: 8px;
+    transition: .2s;
 }
 
 .btn:hover {
