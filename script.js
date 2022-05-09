@@ -11,6 +11,7 @@ const btnColor = document.querySelector(".btn-color");
 const btnShade = document.querySelector(".btn-shade");
 const colors = document.querySelector(".color-picker");
 const grid = document.querySelector(".grid");
+const reset = document.querySelector(".reset");
 
 //Game Logic
 function getGrid() {
@@ -84,6 +85,10 @@ function setMode(mode) {
     modeSpan.innerText = mode;
 }
 
+function resetColors() {
+    window.location.reload();
+}
+
 
 //Event Listeners
 btnSetGrid.addEventListener("click", setGrid);
@@ -105,3 +110,5 @@ btnShade.addEventListener("click", () => {
     shade = !shade;
     setMode("shader");
 })
+
+reset.addEventListener("click", resetColors);
