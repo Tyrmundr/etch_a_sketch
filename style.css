@@ -31,6 +31,21 @@ body {
     gap: 24px;
 }
 
+.interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+}
+
+.mode {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(237, 76, 103, .6);
+}
+
 .grid {
     box-sizing: content-box;
     width: 700px;
