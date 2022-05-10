@@ -41,17 +41,33 @@ function setRandomColor() {
 }
 
 function changeColor() {
-    if(state) {
-        this.style.backgroundColor = setRandomColor();
-    } else {
-        this.style.backgroundColor = color;
-    }
-    
-    if(shade) {
+    if(shade && !this.style.backgroundColor) {
+        this.style.backgroundColor = "#f7f7f7";
         let brightness = Number(this.style.filter.slice(11, -1));
         if(brightness <= 1 && brightness >= 0) {
             this.style.filter = `brightness(${brightness - 0.1})`;
         }
+    } else if(shade && this.style.backgroundColor) {
+        let brightness = Number(this.style.filter.slice(11, -1));
+        if(brightness <= 1 && brightness >= 0) {
+            this.style.filter = `brightness(${brightness - 0.1})`;
+        }
+    }
+
+    if(state) {
+        this.style.backgroundColor = setRandomColor();
+        this.style.filter = `brightness(1)`;
+    };
+
+    if(!state && !shade) {
+        this.style.backgroundColor = color;
+        this.style.filter = `brightness(1)`;
+    }
+}
+
+function changeBrightness() {
+    if(shade) {
+        
     }
 }
 
@@ -96,6 +112,8 @@ window.addEventListener("load", setupDefault)
 
 colors.addEventListener("change", (e) => {
     setMode("custom");
+    state = false;
+    shade = false;
     color = e.target.value;
 })
 
