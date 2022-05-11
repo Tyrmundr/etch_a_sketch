@@ -16,7 +16,7 @@ Learned:
 - shading
 
 Updates:  
-- TBA
+- Realized I had a few issues with the coloring functions. Turning on shading shaded but those cells which did not have a color, it set the color of the color-picker value if it was used. If not, it set the default value. Had to use some if-else logic but now it works. 
 
 Takeaway(s):  
 
